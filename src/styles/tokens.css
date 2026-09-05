@@ -1,0 +1,19 @@
+:root {
+  /* Monochrome Vesper-inspired primitives */
+  --forest-950: #000; --forest-900: #050505; --forest-800: #111;
+  --gold-600: #a4a4a4; --gold-500: #dedede; --gold-400: #f3f3f3;
+  --cream-200: #151515; --cream-100: #0b0b0b; --cream-50: #f7f7f7;
+  --ink-950: #f7f7f7; --ink-600: #9d9d9d; --white: #fff; --error: #ff6b5f;
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4rem; --space-9: 6rem; --space-10: 9rem;
+  --radius-sm: .45rem; --radius-md: .8rem; --radius-full: 999px;
+  --text-xs: .75rem; --text-sm: .875rem; --text-base: 1rem; --text-lg: 1.15rem;
+  --shadow-lift: 0 32px 90px rgb(0 0 0 / .48);
+  /* Semantic tokens */
+  --color-page: #000; --color-surface: #0a0a0a; --color-ink: #f7f7f7;
+  --color-muted: #999; --color-primary: #fff; --color-accent: #d9d9d9;
+  --color-on-dark: #f7f7f7; --color-line: rgb(255 255 255 / .14); --section-space: clamp(6rem, 12vw, 11rem);
+  --font-display: "Inter", "Arial", sans-serif; --font-body: "Inter", "Arial", sans-serif; --font-serif: "Instrument Serif", "Times New Roman", serif;
+  /* Component tokens */
+  --button-primary-bg: #f4f4f4; --button-primary-fg: #050505; --button-primary-hover: #fff;
+  --button-secondary-border: currentColor; --card-border: var(--color-line); --input-bg: #090909; --focus: #fff;
+}

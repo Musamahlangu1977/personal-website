@@ -1,0 +1,58 @@
+export const site = {
+  name: "Mahlangu Online Solutions",
+  descriptor: "Career & Personal Branding Studio",
+  founder: "Musa Njabulo Mahlangu",
+  founderRole: "Founder & Lead Consultant",
+  email: "musamahlangu1977@gmail.com",
+  phone: "+27 63 141 3009",
+  whatsappNumber: "27631413009",
+  location: "Pretoria, Gauteng, South Africa",
+  founded: "December 2023",
+  clients: "150+",
+  social: { linkedin: "", github: "" },
+  defaultMessage: "Hi Mahlangu Online Solutions. I came across your website and would like assistance with...",
+  qualifications: ["BA Honours (History) — University of the Free State", "BA Psychology & History — University of the Free State", "TEFL Certified"],
+  founderStory: "Musa built Mahlangu Online Solutions independently from the ground up in December 2023, on a simple premise: talented people deserve documents and brands as strong as their work. Since then, he has helped more than 150 job seekers, small business owners and corporate professionals across South Africa present themselves with clarity, credibility and confidence.",
+  stats: [{ value: "150+", label: "Clients served" }, { value: "2023", label: "Independently founded" }, { value: "RSA", label: "Nationwide reach" }, { value: "5+", label: "Core service disciplines" }],
+};
+export function whatsappUrl(message = site.defaultMessage) { return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`; }
+export const actions = { start: "Start Your Project", work: "Explore Our Work", whatsapp: "WhatsApp Us", learn: "Learn more", allWork: "View all projects", pricing: "View All Services & Pricing" };
+export const home = {
+  eyebrow: "Career & personal branding studio",
+  headline: ["We open doors.", "You walk through —", "with the documents", "to prove it."],
+  intro: "Strategic career documents, personal brand systems and digital experiences designed to turn overlooked talent and growing businesses into credible, memorable brands.",
+  location: "Built in Pretoria. Trusted across South Africa.",
+  heroCaption: "A considered identity. A stronger first impression.",
+  heroProject: "Selected brand work · Atchar",
+  problemHeading: "Talented people are being overlooked — not because they lack ability, but because their story was never told with the right structure.",
+  problem: { label: "The problem", title: "Great careers, invisible on paper.", body: "Buried achievements. Flat formatting. Generic language. Too often, the first impression falls short of the person behind it. Ability isn’t the gap. Presentation is." },
+  solution: { label: "The solution", title: "Documents built like strategy, not templates.", body: "We restructure careers into achievement-focused documents and cohesive personal brand systems — so the first impression finally matches the talent behind it." },
+  servicesHeading: "Five disciplines.\nOne considered approach.",
+  servicesIntro: "One outcome — you get noticed for the right reasons. From the first line of your CV to the last detail of your brand, everything works together.",
+  digitalHeading: "Career. Brand. Digital.\nOne connected identity.",
+  digitalIntro: "The story shouldn’t stop at your CV. We carry the same strategic thinking into the websites, visuals and business documents that represent you every day.",
+  workHeading: "The thinking.\nAnd the work to prove it.",
+  workIntro: "Identity systems, career stories and thoughtful design. A selection from the studio.",
+  founderHeading: "Built independently.\nBuilt intentionally.",
+  founderLink: "More About Musa",
+  resourcesHeading: "A little clarity\nfor your next move.",
+  resourcesIntro: "Practical notes on careers, personal branding and building your presence.",
+  ctaHeading: "Ready to walk\nthrough the door?",
+  ctaBody: "Tell us where you want to go. We’ll help you build the documents, brand and digital presence to get there.",
+  experienceHeading: "Not just documents. A complete professional presence.",
+  experienceIntro: "We bring career strategy, personal branding and digital design into one clear system — built to help people and growing businesses show up with confidence.",
+  serviceExperienceHeading: "Five ways to make your next move feel considered.",
+  capabilityHeading: "One identity, wherever people find you.",
+  founderIntro: "Musa built the studio independently in Pretoria in December 2023. The work is grounded in careful listening, clear strategy and design that respects the person behind the brief.",
+};
+export const process = {
+  heading: "Good work starts\nwith a conversation.",
+  intro: "A collaborative, low-friction process — from first message to finished work.",
+  steps: [
+    { title: "Discovery conversation", body: "A short, free consultation to understand your goals, current documents and what’s holding you back." },
+    { title: "Strategy & story mapping", body: "We map your experience into a coherent narrative, identifying the achievements and language that matter." },
+    { title: "Design & drafting", body: "Your documents or brand assets take shape — considered, purposeful and tailored to your field." },
+    { title: "Review & handover", body: "You review. We refine together. You leave with polished work and a clear plan for how to use it." },
+  ],
+};
+

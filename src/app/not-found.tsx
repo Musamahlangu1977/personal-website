@@ -1,0 +1,2 @@
+import { ButtonLink } from "@/components/button-link";import { PageHero } from "@/components/page-hero";
+export default function NotFound(){return <main id="main-content"><PageHero eyebrow="404" title={"This door doesn’t\nlead anywhere."} intro="The page may have moved, or the address may be incomplete."/><section className="section-compact"><div className="container"><ButtonLink href="/">Return home</ButtonLink></div></section></main>}

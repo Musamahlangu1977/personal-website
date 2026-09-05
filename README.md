@@ -1,16 +1,29 @@
-# 🌐 Mahlangu Online Solutions
+# Mahlangu Online Solutions
 
-My professional website showcasing HR support, administrative services, and brand design offerings.
+Production-ready Next.js website for a South African career, personal branding, design and digital-services studio.
 
-**🔗 Live Site:** [mahlanguonlinesolutions.netlify.app](https://mahlanguonlinesolutions.netlify.app/)
+## Setup
 
-## What You'll Find
-- Service offerings (HR & Admin Support, Brand Design)
-- Client onboarding process
-- Professional background and contact details
-- Digital portfolio integration
+Requires Node.js 20.9+ and pnpm 10+.
 
-## Tech Stack
-- Static site generator / HTML & CSS
-- Hosted on Netlify
-- Responsive design principles
+```bash
+pnpm install
+cp .env.example .env.local
+pnpm dev
+```
+
+Site copy and records live in `src/content/`. Prices are controlled by `src/content/pricing.ts`.
+
+## Checks and production
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+pnpm start
+```
+
+The form requires `ENQUIRY_WEBHOOK_URL`, a server endpoint that accepts JSON. An optional bearer token is sent from the server. Without a handler, visitors receive WhatsApp and email alternatives. A Firebase HTTPS Function can connect at this boundary without a client SDK.
+
+Keep `SITE_INDEXABLE=false` until the content, domain, privacy page and delivery endpoint are reviewed.

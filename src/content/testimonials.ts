@@ -1,0 +1,3 @@
+export type Testimonial = { quote: string; name: string; context: string; source: "Google" | "WhatsApp" | "Client feedback"; verified: boolean; consentToPublish: boolean };
+export const testimonials: Testimonial[] = [];
+export const reviewCopy = { label: "Client perspectives", heading: "Trust is earned.\nOne project at a time.", placeholder: "Verified client reviews coming soon.", note: "This space is reserved for client feedback shared with permission. The illustrative quotes in our portfolio are not published as reviews.", replacement: "Review placeholder — replace with verified, consented client feedback." };

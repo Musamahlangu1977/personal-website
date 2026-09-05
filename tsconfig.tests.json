@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {"module":"commonjs","moduleResolution":"node","outDir":"tmp/test-build","rootDir":".","noEmit":false,"incremental":false,"allowJs":false},
+  "include": ["src/lib/enquiry.ts", "tests/enquiry.test.ts"]
+}

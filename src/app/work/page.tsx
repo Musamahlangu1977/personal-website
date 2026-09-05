@@ -1,0 +1,3 @@
+import { PageHero } from "@/components/page-hero"; import { PortfolioBrowser } from "@/components/portfolio-browser"; import { FinalCta } from "@/components/final-cta"; import { portfolioCopy } from "@/content/portfolio"; import { pageMetadata,seo } from "@/content/seo";
+export const metadata=pageMetadata(seo.work.title,seo.work.description,"/work");
+export default function Work(){return <main id="main-content"><PageHero eyebrow="Selected work" title={portfolioCopy.heading} intro={portfolioCopy.intro}/><section className="section"><div className="container"><PortfolioBrowser/></div></section><FinalCta/></main>}

@@ -1,0 +1,3 @@
+import { PageHero } from "@/components/page-hero"; import { ServiceGroups } from "@/components/service-groups"; import { FinalCta } from "@/components/final-cta"; import { pageMetadata,seo } from "@/content/seo";
+export const metadata=pageMetadata(seo.services.title,seo.services.description,"/services");
+export default function Services(){return <main id="main-content"><PageHero eyebrow="Career · Brand · Digital" title="The right story.\nThe right shape." intro="Career documents, identities and digital experiences built around where you want to go — and what you already have to offer."/><ServiceGroups/><FinalCta/></main>}
