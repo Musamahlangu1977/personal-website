@@ -27,3 +27,6 @@ pnpm start
 The form requires `ENQUIRY_WEBHOOK_URL`, a server endpoint that accepts JSON. An optional bearer token is sent from the server. Without a handler, visitors receive WhatsApp and email alternatives. A Firebase HTTPS Function can connect at this boundary without a client SDK.
 
 Keep `SITE_INDEXABLE=false` until the content, domain, privacy page and delivery endpoint are reviewed.
+
+
+<!-- Vercel deployment trigger: 2026-09-15 -->
