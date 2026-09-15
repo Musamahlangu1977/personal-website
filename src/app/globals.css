@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:opsz,wght@14..32,300..800&display=swap");
-@import "tailwindcss";
 @import "../styles/tokens.css";
+@import "../styles/motion.css";
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #000; color: var(--color-ink); font-family: var(--font-body); font-size: 1rem; line-height: 1.6; text-rendering: optimizeLegibility; }
@@ -247,9 +247,12 @@ main, .footer { position: relative; z-index: 2; }
 .site-header, .whatsapp-fab { z-index: 50; }
 
 @media (max-width: 700px) {
-  .site-ambient-motion { opacity: .22; }
-  .site-ambient-motion i { width: 110vmax; filter: blur(28px); }
+  .site-ambient-motion { opacity: .32; }
+  .site-ambient-motion i { width: 115vmax; filter: blur(24px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .site-ambient-motion { display: none; }
+  /* Keep the ambient background visible as a subtle static atmosphere.
+     Other motion remains reduced for accessibility. */
+  .site-ambient-motion { display: block; opacity: .26; }
+  .site-ambient-motion i { animation: none !important; }
 }

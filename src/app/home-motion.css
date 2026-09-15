@@ -1,0 +1,307 @@
+/* Homepage motion layer — loaded after home.css */
+
+/* Hero doorway portal: arches receding into depth ("We open doors.") */
+.hero-portal {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 44%;
+  width: min(44vw, 33rem);
+  aspect-ratio: .72;
+  translate: -50% -50%;
+  transform: translate3d(calc(var(--pointer-nx, 0) * -16px), calc(var(--pointer-ny, 0) * -11px), 0);
+  opacity: calc(1 - var(--hero-progress, 0) * 1.5);
+  pointer-events: none;
+}
+.hero-portal i {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  border: 1px solid rgb(255 255 255 / .2);
+  border-bottom-color: transparent;
+  border-radius: 50% 50% .3rem .3rem / 36% 36% .3rem .3rem;
+  box-shadow: 0 0 44px rgb(255 255 255 / .045), inset 0 0 34px rgb(255 255 255 / .035);
+  animation: portal-recede 11s cubic-bezier(.45, 0, .55, 1) infinite;
+}
+.hero-portal i:nth-child(2) { animation-delay: -2.2s; }
+.hero-portal i:nth-child(3) { animation-delay: -4.4s; }
+.hero-portal i:nth-child(4) { animation-delay: -6.6s; }
+.hero-portal i:nth-child(5) { animation-delay: -8.8s; }
+/* The light through the open door */
+.hero-portal::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  width: 2px;
+  height: 72%;
+  translate: -50% 0;
+  background: linear-gradient(180deg, transparent, rgb(255 255 255 / .75) 40%, rgb(255 255 255 / .9) 70%, transparent);
+  box-shadow: 0 0 22px 6px rgb(255 255 255 / .12), 0 0 90px 30px rgb(255 255 255 / .05);
+  animation: portal-light 6.5s ease-in-out infinite;
+}
+/* Threshold reflection on the floor */
+.hero-portal::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6%;
+  width: 140%;
+  height: 16%;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgb(255 255 255 / .16), transparent 70%);
+  animation: portal-floor 6.5s ease-in-out infinite;
+}
+@keyframes portal-recede {
+  0% { transform: scale(.32); opacity: 0; }
+  22% { opacity: .95; }
+  70% { opacity: .35; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes portal-light {
+  0%, 100% { opacity: .35; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(2.4); }
+}
+@keyframes portal-floor {
+  0%, 100% { opacity: .4; transform: scaleX(.8); }
+  50% { opacity: 1; transform: scaleX(1.1); }
+}
+
+/* Swaying light beams and a slow scanline */
+.hero-beams {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.hero-beams i {
+  position: absolute;
+  top: -35%;
+  width: 20vw;
+  height: 170%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / .03) 30%, rgb(255 255 255 / .075) 50%, rgb(255 255 255 / .03) 70%, transparent);
+  transform-origin: 50% 0;
+  animation: beam-sway 14s ease-in-out infinite alternate;
+}
+.hero-beams i:nth-child(1) { left: 12%; animation-delay: -3s; }
+.hero-beams i:nth-child(2) { left: 42%; width: 14vw; animation-duration: 18s; animation-delay: -9s; }
+.hero-beams i:nth-child(3) { left: 70%; animation-duration: 16s; animation-delay: -6s; }
+.hero-beams::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / .38) 30%, rgb(255 255 255 / .38) 70%, transparent);
+  box-shadow: 0 0 18px rgb(255 255 255 / .22);
+  animation: hero-scan 9s cubic-bezier(.5, 0, .5, 1) 2s infinite;
+}
+@keyframes beam-sway {
+  0% { transform: rotate(-16deg); opacity: .4; }
+  50% { opacity: 1; }
+  100% { transform: rotate(12deg); opacity: .5; }
+}
+@keyframes hero-scan {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  55% { transform: translateY(100svh); opacity: 0; }
+  100% { transform: translateY(100svh); opacity: 0; }
+}
+
+/* Light pulses running down the dashed guide lines */
+.experience-home .home-guides i { position: relative; clip-path: inset(0 -3px); }
+.experience-home .home-guides i::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  width: 1px;
+  height: 22vh;
+  background: linear-gradient(transparent, rgb(255 255 255 / .75), transparent);
+  box-shadow: 0 0 10px rgb(255 255 255 / .4);
+  opacity: 0;
+  animation: guide-pulse 8s cubic-bezier(.6, 0, .4, 1) infinite;
+}
+.experience-home .home-guides i:last-child::after { left: auto; right: -1px; }
+.experience-home .home-guides i:nth-child(2)::after { animation-delay: 2.1s; }
+.experience-home .home-guides i:nth-child(3)::after { animation-delay: 4.3s; }
+.experience-home .home-guides i:nth-child(4)::after { animation-delay: 6.2s; }
+@keyframes guide-pulse {
+  0% { transform: translateY(-22vh); opacity: 0; }
+  12% { opacity: 1; }
+  80% { opacity: .6; }
+  100% { transform: translateY(120vh); opacity: 0; }
+}
+
+/* Headline sheen across the serif line */
+@media (prefers-reduced-motion: no-preference) {
+  .cinematic-home .hero-title em {
+    margin-inline: -.08em;
+    padding-inline: .08em;
+    color: transparent;
+    background: linear-gradient(100deg, #a2a39e 0 40%, #fff 50%, #a2a39e 60% 100%);
+    background-size: 260% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: hero-line-in 1.15s .68s both cubic-bezier(.16,1,.3,1), hero-sheen 7s 2.4s ease-in-out infinite;
+  }
+}
+@keyframes hero-sheen {
+  0%, 50% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Scene transitions: a light sweep along each section's top edge */
+.experience-home [data-scene] {
+  background-image: linear-gradient(90deg, transparent, rgb(255 255 255 / .6), transparent);
+  background-size: 34% 1px;
+  background-repeat: no-repeat;
+  background-position: -60% 0;
+}
+.experience-home [data-scene].is-scene-active { animation: scene-sweep 2.6s .15s cubic-bezier(.2,.75,.2,1) both; }
+@keyframes scene-sweep { from { background-position: -60% 0; } to { background-position: 160% 0; } }
+
+/* Live dot on scene labels */
+.experience-home .scene-mark::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+  animation: mark-blink 2.4s ease-in-out infinite;
+}
+@keyframes mark-blink { 50% { opacity: .2; } }
+
+/* Orbiting point on the service sigils */
+.service-sigil i:nth-child(4) {
+  inset: -.35rem;
+  border-color: transparent;
+  animation: sigil-orbit 9s linear infinite;
+}
+.service-sigil i:nth-child(4)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 12px 2px rgb(255 255 255 / .55);
+}
+.service-tile:nth-child(even) .service-sigil i:nth-child(4) { animation-direction: reverse; animation-duration: 11s; }
+@keyframes sigil-orbit { to { transform: rotate(360deg); } }
+
+/* Let panels return to their normal styles after the entrance animation,
+   so hover lift and tilt are not overridden by a held final keyframe. */
+[data-reveal].is-visible [data-panel] { animation-fill-mode: backwards; }
+
+/* Pointer-follow glare and 3D tilt on cards */
+.panel-glare {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgb(255 255 255 / .17), transparent 45%);
+  mix-blend-mode: screen;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+[data-tilt]:hover .panel-glare { opacity: 1; }
+.experience-home .service-deck .service-tile.is-tilting {
+  transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-9px);
+  transition: transform .12s linear, border-color .35s ease, box-shadow .35s ease;
+}
+.experience-home .work-experience .project-card .project-media { transition: transform .5s cubic-bezier(.2,.75,.2,1); }
+.experience-home .work-experience .project-card.is-tilting .project-media {
+  transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform .12s linear;
+}
+
+/* Count-up stats get a soft glint while counting */
+.experience-stats strong.is-counting { text-shadow: 0 0 34px rgb(255 255 255 / .45); }
+
+/* Magnetic hero and CTA buttons */
+.experience-home .hero-actions .button,
+.experience-home .final-cta .button {
+  transition: background .35s, color .35s, transform .25s, border-color .35s, box-shadow .35s, translate .45s cubic-bezier(.2,.75,.2,1);
+}
+
+/* Final call to action: breathing door rings */
+.experience-home .final-cta { position: relative; overflow: hidden; }
+.experience-home .final-cta > .container { position: relative; z-index: 1; }
+.experience-home .final-cta::before,
+.experience-home .final-cta::after {
+  content: "";
+  position: absolute;
+  right: -8rem;
+  top: 50%;
+  width: min(60vw, 42rem);
+  aspect-ratio: .72;
+  translate: 0 -50%;
+  border: 1px solid rgb(255 255 255 / .1);
+  border-radius: 50% 50% .3rem .3rem / 36% 36% .3rem .3rem;
+  pointer-events: none;
+  animation: cta-door 9s ease-in-out infinite;
+}
+.experience-home .final-cta::after { width: min(42vw, 29rem); right: -.5rem; animation-delay: -4.5s; }
+@keyframes cta-door {
+  0%, 100% { transform: scale(.94); opacity: .45; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+
+/* Cursor halo (fine pointers only) */
+.cursor-halo { display: none; }
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cursor-halo {
+    position: fixed;
+    z-index: 90;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: -1.2rem 0 0 -1.2rem;
+    opacity: 0;
+    border: 1px solid rgb(255 255 255 / .5);
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    transition: scale .35s cubic-bezier(.2,.75,.2,1), opacity .3s ease, background-color .3s ease;
+  }
+  .cursor-halo.is-active { opacity: 1; }
+  .cursor-halo.is-hovering { scale: 1.75; background-color: rgb(255 255 255 / .1); }
+}
+
+@media (max-width: 900px) {
+  .hero-portal { top: 40%; width: min(72vw, 26rem); }
+  .hero-beams i { width: 34vw; }
+}
+@media (max-width: 600px) {
+  .hero-portal { top: 36%; width: 82vw; }
+  .experience-home .final-cta::before { right: -12rem; }
+  .experience-home .final-cta::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-portal, .hero-portal::before, .hero-portal::after, .hero-portal i,
+  .hero-beams i, .hero-beams::after, .experience-home .home-guides i::after,
+  .experience-home .scene-mark::after, .service-sigil i:nth-child(4),
+  .experience-home .final-cta::before, .experience-home .final-cta::after,
+  .experience-home [data-scene].is-scene-active { animation: none !important; }
+  .hero-portal { transform: none; }
+  .hero-portal i { opacity: .4; }
+  .hero-portal i:nth-child(1) { transform: scale(.45); }
+  .hero-portal i:nth-child(2) { transform: scale(.7); }
+  .hero-portal i:nth-child(3) { transform: scale(.95); }
+  .hero-portal i:nth-child(4) { transform: scale(1.2); opacity: .2; }
+  .hero-portal i:nth-child(5) { display: none; }
+  .hero-beams::after, .experience-home .home-guides i::after { display: none; }
+}

@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+tmp/
+portfolio-source.pdf
+.vercel/
+test-results/
+.pnpm-store/

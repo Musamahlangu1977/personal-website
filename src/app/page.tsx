@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import "./home.css";
+import "./home-motion.css";
 import { ButtonLink } from "@/components/button-link";
 import { FinalCta } from "@/components/final-cta";
 import { HomeMotion } from "@/components/home-motion";
@@ -22,6 +23,8 @@ export default function Home() {
 
     <section className="hero dark">
       <div className="home-guides" aria-hidden="true"><i/><i/><i/><i/></div>
+      <div className="hero-beams" aria-hidden="true"><i/><i/><i/></div>
+      <div className="hero-portal" aria-hidden="true"><i/><i/><i/><i/><i/></div>
       <figure className="hero-art" aria-hidden="true">
         <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="/images/hero-doors-v2.webp">
           <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4" type="video/mp4"/>
@@ -74,9 +77,10 @@ export default function Home() {
           <Link href="/services">Explore all services <ArrowRight size={17}/></Link>
         </header>
         <div className="service-deck">
-          {coreServices.map((service, index) => <Link key={service.id} href={`/services#${service.id}`} className="service-tile" data-panel>
+          {coreServices.map((service, index) => <Link key={service.id} href={`/services#${service.id}`} className="service-tile" data-panel data-tilt>
+            <span className="panel-glare" aria-hidden="true"/>
             <span className="service-index">{String(index + 1).padStart(2, "0")}</span>
-            <span className="service-sigil" aria-hidden="true"><i/><i/><i/></span>
+            <span className="service-sigil" aria-hidden="true"><i/><i/><i/><i/></span>
             <h3>{service.title}</h3>
             <p>{service.outcome}</p>
             <ArrowUpRight className="service-arrow" size={18}/>
