@@ -82,6 +82,24 @@
   .ambient-field { opacity: .8; }
   .site-ambient-motion i:nth-child(4) { width: 26vmax; }
 }
+
+/* Mobile performance pass.
+   Phones pay heavily for blend modes, backdrop blur and blurred full-screen
+   layers, so the atmosphere is thinned rather than stacked on small screens. */
+@media (max-width: 900px) {
+  /* Screen blending forces the whole page through an extra compositing pass.
+     Over a black page, normal blending looks the same and scrolls far better. */
+  body .site-ambient-motion,
+  .ambient-field { mix-blend-mode: normal; }
+  .site-ambient-motion::after { display: none; }            /* film grain off */
+  .site-ambient-motion i:nth-child(3) { display: none; }     /* one ribbon fewer */
+  body .site-ambient-motion i { filter: blur(18px); }
+  /* Backdrop blur is the single most expensive effect while scrolling. */
+  .site-header .logo,
+  .desktop-nav a,
+  .menu-toggle,
+  .mobile-menu nav a { backdrop-filter: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .site-ambient-motion::before,
   .site-ambient-motion::after { animation: none !important; }

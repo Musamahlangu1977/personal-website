@@ -46,11 +46,14 @@ export function startAmbientField(canvas: HTMLCanvasElement): () => void {
   const resize = () => {
     width = window.innerWidth;
     height = window.innerHeight;
-    const dpr = Math.min(window.devicePixelRatio || 1, width < 700 ? 1.25 : 1.5);
+    const small = width < 900;
+    const dpr = Math.min(window.devicePixelRatio || 1, small ? 1 : 1.5);
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = Math.round(Math.min(140, Math.max(46, (width * height) / 14000)));
+    const count = small
+      ? Math.round(Math.min(44, Math.max(24, (width * height) / 22000)))
+      : Math.round(Math.min(140, Math.max(46, (width * height) / 14000)));
     motes = Array.from({ length: count }, () => spawn(true));
     if (reduceMotion) draw(performance.now(), 0);
   };
@@ -141,6 +144,7 @@ export function startAmbientField(canvas: HTMLCanvasElement): () => void {
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(pointer.x, pointer.y);
       ctx.stroke();
+      if (!finePointer) continue; // skip pair lines on touch screens
       for (let j = i + 1; j < near.length; j += 1) {
         const b = near[j];
         const distance = Math.hypot(a.x - b.x, a.y - b.y);

@@ -77,6 +77,12 @@ export function HomeMotion() {
       );
       hero?.style.setProperty("--hero-progress", heroProgress.toFixed(3));
       page?.style.setProperty("--page-progress", pageProgress.toFixed(4));
+      // Measuring every scene on each scroll frame is a layout read phones
+      // cannot afford, and the parallax it drives is disabled there anyway.
+      if (window.innerWidth <= 900) {
+        frame = 0;
+        return;
+      }
       scenes.forEach((scene) => {
         const rect = scene.getBoundingClientRect();
         const sceneProgress = (window.innerHeight * 0.5 - (rect.top + rect.height * 0.5)) / Math.max(rect.height, 1);
@@ -165,16 +171,20 @@ export function HomeMotion() {
 
     updateScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("pointermove", onPointerMove, { passive: true });
-    document.addEventListener("pointerout", onPointerOut);
+    if (finePointer) {
+      window.addEventListener("pointermove", onPointerMove, { passive: true });
+      document.addEventListener("pointerout", onPointerOut);
+    }
     return () => {
       observer.disconnect();
       sceneObserver.disconnect();
       countObserver.disconnect();
       countFrames.forEach((id) => window.cancelAnimationFrame(id));
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("pointermove", onPointerMove);
-      document.removeEventListener("pointerout", onPointerOut);
+      if (finePointer) {
+        window.removeEventListener("pointermove", onPointerMove);
+        document.removeEventListener("pointerout", onPointerOut);
+      }
       if (interactive) {
         tiltables.forEach((element) => {
           element.removeEventListener("pointermove", onTiltMove);

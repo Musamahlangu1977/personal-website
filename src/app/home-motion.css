@@ -285,6 +285,22 @@
   .hero-portal { top: 40%; width: min(72vw, 26rem); }
   .hero-beams i { width: 34vw; }
 }
+/* Mobile performance pass for the homepage scenes. */
+@media (max-width: 900px) {
+  .cinematic-home::before { display: none; }               /* pointer spotlight: no pointer */
+  .cinematic-home .hero-eyebrow,
+  .cinematic-home .hero-bottom article { backdrop-filter: none; background-color: rgb(10 10 10 / .72); }
+  /* Scroll-driven parallax on large blurred scene backdrops costs more than it shows here. */
+  .experience-home [data-scene]::before { filter: none; transform: none !important; }
+  .manifesto-visual { transform: none !important; }
+  .hero-beams { mix-blend-mode: normal; }
+  .hero-beams i:nth-child(2) { display: none; }
+  /* The headline sits right over the portal on a narrow screen. */
+  .hero-portal { opacity: calc((1 - var(--hero-progress, 0) * 1.5) * .5); }
+  /* Filtering and scaling a playing video every frame is the heaviest hero cost. */
+  .cinematic-home .hero-video { transform: none; }
+}
+
 @media (max-width: 600px) {
   .hero-portal { top: 36%; width: 82vw; }
   .experience-home .final-cta::before { right: -12rem; }

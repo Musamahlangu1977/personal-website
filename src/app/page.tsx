@@ -5,6 +5,7 @@ import "./home.css";
 import "./home-motion.css";
 import { ButtonLink } from "@/components/button-link";
 import { FinalCta } from "@/components/final-cta";
+import { HeroVideo } from "@/components/hero-video";
 import { HomeMotion } from "@/components/home-motion";
 import { ProjectGrid } from "@/components/project-grid";
 import { coreServices, services } from "@/content/services";
@@ -26,9 +27,7 @@ export default function Home() {
       <div className="hero-beams" aria-hidden="true"><i/><i/><i/></div>
       <div className="hero-portal" aria-hidden="true"><i/><i/><i/><i/><i/></div>
       <figure className="hero-art" aria-hidden="true">
-        <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="/images/hero-doors-v2.webp">
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4" type="video/mp4"/>
-        </video>
+        <HeroVideo src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4" poster="/images/hero-doors-v2.webp"/>
         <span className="hero-glow"/>
       </figure>
       <div className="container hero-stage">
