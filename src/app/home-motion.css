@@ -293,12 +293,23 @@
   /* Scroll-driven parallax on large blurred scene backdrops costs more than it shows here. */
   .experience-home [data-scene]::before { filter: none; transform: none !important; }
   .manifesto-visual { transform: none !important; }
-  .hero-beams { mix-blend-mode: normal; }
-  .hero-beams i:nth-child(2) { display: none; }
+  .hero-beams { display: none; }
   /* The headline sits right over the portal on a narrow screen. */
   .hero-portal { opacity: calc((1 - var(--hero-progress, 0) * 1.5) * .5); }
   /* Filtering and scaling a playing video every frame is the heaviest hero cost. */
   .cinematic-home .hero-video { transform: none; }
+  /* Hero film grain and glow: full-screen gradient painting, barely visible here. */
+  .cinematic-home .hero::before,
+  .cinematic-home .hero-glow { display: none; }
+  /* These two animate background-position, which repaints instead of using the
+     GPU — fine on a desktop, costly across a phone's full section width. */
+  .experience-home [data-scene] { background-image: none; }
+  .experience-home [data-scene].is-scene-active { animation: none; }
+  .cinematic-home .hero-title em {
+    color: #b6b7b1;
+    background: none;
+    animation: hero-line-in 1.15s .68s both cubic-bezier(.16, 1, .3, 1);
+  }
 }
 
 @media (max-width: 600px) {

@@ -92,13 +92,27 @@
   body .site-ambient-motion,
   .ambient-field { mix-blend-mode: normal; }
   .site-ambient-motion::after { display: none; }            /* film grain off */
-  .site-ambient-motion i:nth-child(3) { display: none; }     /* one ribbon fewer */
-  body .site-ambient-motion i { filter: blur(18px); }
-  /* Backdrop blur is the single most expensive effect while scrolling. */
-  .site-header .logo,
-  .desktop-nav a,
-  .menu-toggle,
-  .mobile-menu nav a { backdrop-filter: none; }
+  .site-ambient-motion i:nth-child(3),
+  .site-ambient-motion i:nth-child(4) { display: none; }     /* two ribbons fewer */
+  /* Full-screen blurred layers are large GPU textures; keep them modest. */
+  body .site-ambient-motion i { width: 70vmax; filter: blur(14px); }
+
+  /* Frosted glass (backdrop-filter) re-samples everything behind an element on
+     every frame. It appears in the header, hero, cards and page heroes, and it
+     is the main cause of scroll jank on phones — remove all of it here. */
+  *,
+  *::before,
+  *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* The particle canvas is a full-screen redraw every frame: too much for a
+     phone on top of everything else. The CSS ribbons carry the atmosphere. */
+  .ambient-field { display: none; }
+
+  /* Smooth scrolling on a heavy page reads as lag when you tap a link. */
+  html:root { scroll-behavior: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .site-ambient-motion::before,
