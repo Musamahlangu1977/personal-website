@@ -298,6 +298,13 @@
   .hero-portal { opacity: calc((1 - var(--hero-progress, 0) * 1.5) * .5); }
   /* Filtering and scaling a playing video every frame is the heaviest hero cost. */
   .cinematic-home .hero-video { transform: none; }
+  /* The capability marquee is a 5000px layer sliding sideways forever. Moving
+     horizontally while the reader scrolls vertically is disorienting on a small
+     screen, so it becomes a normal row you can swipe instead. */
+  .capability-rail .rail-track { width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .capability-rail .rail-track::-webkit-scrollbar { display: none; }
+  .capability-rail .rail-track > div { animation: none; }
+  .capability-rail .rail-track > div[aria-hidden] { display: none; }
   /* Hero film grain and glow: full-screen gradient painting, barely visible here. */
   .cinematic-home .hero::before,
   .cinematic-home .hero-glow { display: none; }
@@ -310,6 +317,25 @@
     background: none;
     animation: hero-line-in 1.15s .68s both cubic-bezier(.16, 1, .3, 1);
   }
+
+  /* Calm mode: the doorway, sigils, markers and CTA rings hold a still pose
+     instead of looping. Entrance reveals still play once as you scroll. */
+  .hero-portal i,
+  .hero-portal::before,
+  .hero-portal::after,
+  .experience-home .scene-mark::after,
+  .service-sigil i,
+  .founder-signal > b,
+  .experience-home .final-cta::before,
+  .experience-home .final-cta::after { animation: none !important; }
+  .experience-home .home-guides i::after { display: none; }
+  .hero-portal i:nth-child(1) { transform: scale(.52); opacity: .38; }
+  .hero-portal i:nth-child(2) { transform: scale(.88); opacity: .24; }
+  .hero-portal i:nth-child(3) { transform: scale(1.2); opacity: .13; }
+  .hero-portal i:nth-child(4),
+  .hero-portal i:nth-child(5) { display: none; }
+  .hero-portal::before { opacity: .55; }
+  .hero-portal::after { opacity: .6; }
 }
 
 @media (max-width: 600px) {

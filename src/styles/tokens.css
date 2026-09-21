@@ -12,7 +12,7 @@
   --color-page: #000; --color-surface: #0a0a0a; --color-ink: #f7f7f7;
   --color-muted: #999; --color-primary: #fff; --color-accent: #d9d9d9;
   --color-on-dark: #f7f7f7; --color-line: rgb(255 255 255 / .14); --section-space: clamp(6rem, 12vw, 11rem);
-  --font-display: "Inter", "Arial", sans-serif; --font-body: "Inter", "Arial", sans-serif; --font-serif: "Instrument Serif", "Times New Roman", serif;
+  --font-display: var(--font-inter, "Inter"), "Arial", sans-serif; --font-body: var(--font-inter, "Inter"), "Arial", sans-serif; --font-serif: var(--font-instrument-serif, "Instrument Serif"), "Times New Roman", serif;
   /* Component tokens */
   --button-primary-bg: #f4f4f4; --button-primary-fg: #050505; --button-primary-hover: #fff;
   --button-secondary-border: currentColor; --card-border: var(--color-line); --input-bg: #090909; --focus: #fff;
