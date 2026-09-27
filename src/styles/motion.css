@@ -40,7 +40,14 @@
       radial-gradient(1px 1px at 196px 28px, rgb(255 255 255 / .5), transparent 62%),
       radial-gradient(1.3px 1.3px at 210px 148px, rgb(255 255 255 / .66), transparent 62%),
       radial-gradient(1px 1px at 52px 118px, rgb(255 255 255 / .45), transparent 62%),
-      radial-gradient(1.2px 1.2px at 168px 208px, rgb(255 255 255 / .58), transparent 62%);
+      radial-gradient(1.2px 1.2px at 168px 208px, rgb(255 255 255 / .58), transparent 62%),
+      radial-gradient(1.1px 1.1px at 8px 206px, rgb(255 255 255 / .52), transparent 62%),
+      radial-gradient(1.4px 1.4px at 112px 14px, rgb(255 255 255 / .7), transparent 62%),
+      radial-gradient(1px 1px at 232px 82px, rgb(255 255 255 / .48), transparent 62%),
+      radial-gradient(1.3px 1.3px at 96px 108px, rgb(255 255 255 / .6), transparent 62%),
+      radial-gradient(1px 1px at 180px 138px, rgb(255 255 255 / .44), transparent 62%),
+      radial-gradient(1.6px 1.6px at 34px 148px, rgb(255 255 255 / .72), transparent 62%),
+      radial-gradient(1.1px 1.1px at 128px 232px, rgb(255 255 255 / .5), transparent 62%);
     animation: sky-drift 150s linear infinite;
   }
   .night-sky i:nth-child(2) {
@@ -49,11 +56,24 @@
       radial-gradient(2.1px 2.1px at 58px 82px, rgb(255 255 255 / .95), transparent 58%),
       radial-gradient(1.8px 1.8px at 292px 196px, rgb(255 255 255 / .8), transparent 58%),
       radial-gradient(2.4px 2.4px at 176px 324px, rgb(255 255 255 / .85), transparent 58%),
-      radial-gradient(1.6px 1.6px at 338px 42px, rgb(255 255 255 / .6), transparent 58%);
+      radial-gradient(1.6px 1.6px at 338px 42px, rgb(255 255 255 / .6), transparent 58%),
+      radial-gradient(2px 2px at 96px 246px, rgb(255 255 255 / .82), transparent 58%),
+      radial-gradient(1.7px 1.7px at 252px 92px, rgb(255 255 255 / .7), transparent 58%),
+      radial-gradient(2.2px 2.2px at 20px 154px, rgb(255 255 255 / .78), transparent 58%);
     animation: sky-twinkle 7s ease-in-out infinite;
+  }
+  /* Constellation linework: one painted SVG tile, drifting slower than the
+     stars so the sky keeps a little depth. */
+  .night-sky i:nth-child(3) {
+    inset: -640px 0 -640px 0;
+    opacity: .42;
+    background-size: 620px 620px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620'%3E%3Cg fill='none' stroke='rgb(255,255,255)' stroke-opacity='.3' stroke-width='1'%3E%3Cpath d='M48 92 L146 148 L238 118 L306 196 L252 274'/%3E%3Cpath d='M238 118 L262 44'/%3E%3Cpath d='M404 78 L470 152 L556 138 L588 214'/%3E%3Cpath d='M470 152 L452 232'/%3E%3Cpath d='M92 392 L186 436 L160 528 L74 486 Z'/%3E%3Cpath d='M186 436 L274 402'/%3E%3Cpath d='M392 348 L468 402 L528 498 L436 540'/%3E%3Cpath d='M468 402 L554 372'/%3E%3C/g%3E%3Cg fill='rgb(255,255,255)' fill-opacity='.85'%3E%3Ccircle cx='48' cy='92' r='2.1'/%3E%3Ccircle cx='146' cy='148' r='1.6'/%3E%3Ccircle cx='238' cy='118' r='2.4'/%3E%3Ccircle cx='306' cy='196' r='1.7'/%3E%3Ccircle cx='252' cy='274' r='2'/%3E%3Ccircle cx='262' cy='44' r='1.5'/%3E%3Ccircle cx='404' cy='78' r='2.2'/%3E%3Ccircle cx='470' cy='152' r='2.5'/%3E%3Ccircle cx='556' cy='138' r='1.6'/%3E%3Ccircle cx='588' cy='214' r='1.8'/%3E%3Ccircle cx='452' cy='232' r='1.5'/%3E%3Ccircle cx='92' cy='392' r='2'/%3E%3Ccircle cx='186' cy='436' r='2.4'/%3E%3Ccircle cx='160' cy='528' r='1.7'/%3E%3Ccircle cx='74' cy='486' r='1.6'/%3E%3Ccircle cx='274' cy='402' r='1.8'/%3E%3Ccircle cx='392' cy='348' r='1.9'/%3E%3Ccircle cx='468' cy='402' r='2.4'/%3E%3Ccircle cx='528' cy='498' r='1.7'/%3E%3Ccircle cx='436' cy='540' r='1.6'/%3E%3Ccircle cx='554' cy='372' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    animation: constellation-drift 260s linear infinite;
   }
 }
 @keyframes sky-drift { to { transform: translate3d(0, -240px, 0); } }
+@keyframes constellation-drift { to { transform: translate3d(0, -620px, 0); } }
 @keyframes sky-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 @media (prefers-reduced-motion: reduce) {
   .night-sky i { animation: none !important; }
