@@ -12,6 +12,53 @@
   opacity: .9;
 }
 
+/* Phone star field.
+   Two tiled layers painted once, then slid and faded by the compositor — the
+   cheap way to keep a living sky where the particle canvas is too expensive.
+   The drift distance equals one tile, so the loop is seamless. Desktop uses
+   the canvas instead, so this stays hidden there. */
+.night-sky { display: none; }
+@media (max-width: 900px) {
+  .night-sky {
+    position: fixed;
+    z-index: 5;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  }
+  .night-sky i {
+    position: absolute;
+    inset: -260px 0 -260px 0;
+    background-repeat: repeat;
+    background-size: 240px 240px;
+    background-image:
+      radial-gradient(1.5px 1.5px at 26px 38px, rgb(255 255 255 / .9), transparent 62%),
+      radial-gradient(1.1px 1.1px at 142px 96px, rgb(255 255 255 / .62), transparent 62%),
+      radial-gradient(1.7px 1.7px at 78px 172px, rgb(255 255 255 / .78), transparent 62%),
+      radial-gradient(1px 1px at 196px 28px, rgb(255 255 255 / .5), transparent 62%),
+      radial-gradient(1.3px 1.3px at 210px 148px, rgb(255 255 255 / .66), transparent 62%),
+      radial-gradient(1px 1px at 52px 118px, rgb(255 255 255 / .45), transparent 62%),
+      radial-gradient(1.2px 1.2px at 168px 208px, rgb(255 255 255 / .58), transparent 62%);
+    animation: sky-drift 150s linear infinite;
+  }
+  .night-sky i:nth-child(2) {
+    background-size: 380px 380px;
+    background-image:
+      radial-gradient(2.1px 2.1px at 58px 82px, rgb(255 255 255 / .95), transparent 58%),
+      radial-gradient(1.8px 1.8px at 292px 196px, rgb(255 255 255 / .8), transparent 58%),
+      radial-gradient(2.4px 2.4px at 176px 324px, rgb(255 255 255 / .85), transparent 58%),
+      radial-gradient(1.6px 1.6px at 338px 42px, rgb(255 255 255 / .6), transparent 58%);
+    animation: sky-twinkle 7s ease-in-out infinite;
+  }
+}
+@keyframes sky-drift { to { transform: translate3d(0, -240px, 0); } }
+@keyframes sky-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) {
+  .night-sky i { animation: none !important; }
+}
+
 /* Slow rotating aurora behind the ribbons */
 .site-ambient-motion::before {
   content: "";
