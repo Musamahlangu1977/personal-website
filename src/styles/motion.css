@@ -19,9 +19,18 @@
    the canvas instead, so this stays hidden there. */
 .night-sky { display: none; }
 @media (max-width: 900px) {
+  /* The sky sits BEHIND the page (z-index 0, under main's z-index 2) and the
+     sections below the hero go transparent so it shows through. That keeps
+     bright stars from landing on top of white buttons and body text, and it
+     costs nothing at runtime — the alternative would be blending every frame. */
+  body main.cinematic-home { background: none; }
+  .cinematic-home > section:not(.hero):not(.capability-rail):not(.access-experience):not(.stats) { background-color: transparent; }
+  body main:not(.experience-home) { background: none; }
+  main:not(.experience-home) > section:not(.page-hero) { background-color: transparent; }
+  .footer { background-color: transparent; }
   .night-sky {
     position: fixed;
-    z-index: 5;
+    z-index: 0;
     inset: 0;
     display: block;
     overflow: hidden;
@@ -71,7 +80,17 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='620'%3E%3Cg fill='none' stroke='rgb(255,255,255)' stroke-opacity='.3' stroke-width='1'%3E%3Cpath d='M48 92 L146 148 L238 118 L306 196 L252 274'/%3E%3Cpath d='M238 118 L262 44'/%3E%3Cpath d='M404 78 L470 152 L556 138 L588 214'/%3E%3Cpath d='M470 152 L452 232'/%3E%3Cpath d='M92 392 L186 436 L160 528 L74 486 Z'/%3E%3Cpath d='M186 436 L274 402'/%3E%3Cpath d='M392 348 L468 402 L528 498 L436 540'/%3E%3Cpath d='M468 402 L554 372'/%3E%3C/g%3E%3Cg fill='rgb(255,255,255)' fill-opacity='.85'%3E%3Ccircle cx='48' cy='92' r='2.1'/%3E%3Ccircle cx='146' cy='148' r='1.6'/%3E%3Ccircle cx='238' cy='118' r='2.4'/%3E%3Ccircle cx='306' cy='196' r='1.7'/%3E%3Ccircle cx='252' cy='274' r='2'/%3E%3Ccircle cx='262' cy='44' r='1.5'/%3E%3Ccircle cx='404' cy='78' r='2.2'/%3E%3Ccircle cx='470' cy='152' r='2.5'/%3E%3Ccircle cx='556' cy='138' r='1.6'/%3E%3Ccircle cx='588' cy='214' r='1.8'/%3E%3Ccircle cx='452' cy='232' r='1.5'/%3E%3Ccircle cx='92' cy='392' r='2'/%3E%3Ccircle cx='186' cy='436' r='2.4'/%3E%3Ccircle cx='160' cy='528' r='1.7'/%3E%3Ccircle cx='74' cy='486' r='1.6'/%3E%3Ccircle cx='274' cy='402' r='1.8'/%3E%3Ccircle cx='392' cy='348' r='1.9'/%3E%3Ccircle cx='468' cy='402' r='2.4'/%3E%3Ccircle cx='528' cy='498' r='1.7'/%3E%3Ccircle cx='436' cy='540' r='1.6'/%3E%3Ccircle cx='554' cy='372' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
     animation: constellation-drift 260s linear infinite;
   }
+  /* A few bright stars: a soft glow with a four-point flare, breathing slowly
+     and drifting slowest of all, so they read as the closest lights. */
+  .night-sky i:nth-child(4) {
+    inset: -540px 0 -540px 0;
+    background-size: 520px 520px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='0' stop-color='rgb(255,255,255)' stop-opacity='.55'/%3E%3Cstop offset='.32' stop-color='rgb(255,255,255)' stop-opacity='.12'/%3E%3Cstop offset='1' stop-color='rgb(255,255,255)' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg fill='url(%23g)'%3E%3Ccircle cx='92' cy='118' r='38'/%3E%3Ccircle cx='374' cy='296' r='32'/%3E%3Ccircle cx='214' cy='432' r='26'/%3E%3C/g%3E%3Cg fill='rgb(255,255,255)'%3E%3Cpath transform='translate(92,118)' d='M0 -17 Q2.6 -3 17 0 Q2.6 3 0 17 Q-2.6 3 -17 0 Q-2.6 -3 0 -17 Z'/%3E%3Cpath transform='translate(374,296) scale(.82)' d='M0 -17 Q2.6 -3 17 0 Q2.6 3 0 17 Q-2.6 3 -17 0 Q-2.6 -3 0 -17 Z'/%3E%3Cpath transform='translate(214,432) scale(.64)' d='M0 -17 Q2.6 -3 17 0 Q2.6 3 0 17 Q-2.6 3 -17 0 Q-2.6 -3 0 -17 Z'/%3E%3C/g%3E%3C/svg%3E");
+    animation: bright-drift 190s linear infinite, bright-pulse 5.5s ease-in-out infinite;
+  }
 }
+@keyframes bright-drift { to { transform: translate3d(0, -520px, 0); } }
+@keyframes bright-pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
 @keyframes sky-drift { to { transform: translate3d(0, -240px, 0); } }
 @keyframes constellation-drift { to { transform: translate3d(0, -620px, 0); } }
 @keyframes sky-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
