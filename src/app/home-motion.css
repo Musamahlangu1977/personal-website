@@ -308,6 +308,12 @@
   /* Hero film grain and glow: full-screen gradient painting, barely visible here. */
   .cinematic-home .hero::before,
   .cinematic-home .hero-glow { display: none; }
+  /* Let the star field show through the hero as well. The doors artwork is
+     eased back rather than removed, and no extra animated layers are added —
+     it is the same sky already drawn behind the page. */
+  .cinematic-home .hero { background-color: transparent; }
+  .cinematic-home .hero-art { background-color: transparent; opacity: .62; }
+  .cinematic-home .hero::after { background: linear-gradient(180deg, rgb(0 0 0 / .1), rgb(0 0 0 / .04) 40%, rgb(0 0 0 / .55) 100%); }
   /* These two animate background-position, which repaints instead of using the
      GPU — fine on a desktop, costly across a phone's full section width. */
   .experience-home [data-scene] { background-image: none; }
