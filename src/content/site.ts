@@ -12,11 +12,12 @@ export const site = {
   social: { linkedin: "", github: "" },
   defaultMessage: "Hi Mahlangu Online Solutions. I came across your website and would like assistance with...",
   qualifications: ["BA Honours (History) — University of the Free State", "BA Psychology & History — University of the Free State", "TEFL Certified"],
+  degrees: { institution: "University of the Free State", awards: [{ award: "BA Honours", field: "History" }, { award: "BA", field: "Psychology & History" }] },
   founderStory: "Musa built Mahlangu Online Solutions independently from the ground up in December 2023, on a simple premise: talented people deserve documents and brands as strong as their work. Since then, he has helped more than 150 job seekers, small business owners and corporate professionals across South Africa present themselves with clarity, credibility and confidence.",
-  stats: [{ value: "150+", label: "Clients served" }, { value: "2023", label: "Independently founded" }, { value: "RSA", label: "Nationwide reach" }, { value: "5+", label: "Core service disciplines" }],
+  stats: [{ value: "150+", label: "Clients served" }, { value: "2023", label: "Independently founded" }, { value: "RSA", label: "Nationwide reach" }, { value: "8", label: "Core service disciplines" }],
 };
 export function whatsappUrl(message = site.defaultMessage) { return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`; }
-export const actions = { start: "Start Your Project", work: "Explore Our Work", whatsapp: "WhatsApp Us", learn: "Learn more", allWork: "View all projects", pricing: "View All Services & Pricing" };
+export const actions = { start: "Start Your Project", work: "Explore Our Work", whatsapp: "WhatsApp Us", learn: "Learn more", allWork: "View all projects" };
 export const home = {
   eyebrow: "Career & personal branding studio",
   headline: ["We open doors.", "You walk through —", "with the documents", "to prove it."],
@@ -27,7 +28,7 @@ export const home = {
   problemHeading: "Talented people are being overlooked — not because they lack ability, but because their story was never told with the right structure.",
   problem: { label: "The problem", title: "Great careers, invisible on paper.", body: "Buried achievements. Flat formatting. Generic language. Too often, the first impression falls short of the person behind it. Ability isn’t the gap. Presentation is." },
   solution: { label: "The solution", title: "Documents built like strategy, not templates.", body: "We restructure careers into achievement-focused documents and cohesive personal brand systems — so the first impression finally matches the talent behind it." },
-  servicesHeading: "Five disciplines.\nOne considered approach.",
+  servicesHeading: "Eight disciplines.\nOne considered approach.",
   servicesIntro: "One outcome — you get noticed for the right reasons. From the first line of your CV to the last detail of your brand, everything works together.",
   digitalHeading: "Career. Brand. Digital.\nOne connected identity.",
   digitalIntro: "The story shouldn’t stop at your CV. We carry the same strategic thinking into the websites, visuals and business documents that represent you every day.",
@@ -41,7 +42,7 @@ export const home = {
   ctaBody: "Tell us where you want to go. We’ll help you build the documents, brand and digital presence to get there.",
   experienceHeading: "Not just documents. A complete professional presence.",
   experienceIntro: "We bring career strategy, personal branding and digital design into one clear system — built to help people and growing businesses show up with confidence.",
-  serviceExperienceHeading: "Five ways to make your next move feel considered.",
+  serviceExperienceHeading: "Eight ways to move your career or business forward.",
   capabilityHeading: "One identity, wherever people find you.",
   founderIntro: "Musa built the studio independently in Pretoria in December 2023. The work is grounded in careful listening, clear strategy and design that respects the person behind the brief.",
 };

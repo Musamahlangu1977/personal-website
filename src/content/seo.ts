@@ -11,7 +11,6 @@ export const seo = {
   work: { title: "Selected Work — Career Documents & Brand Identity", description: "Explore Mahlangu Online Solutions’ brand identity, graphic design and career document portfolio." },
   about: { title: "About Musa Mahlangu & the Studio", description: "Meet Musa Njabulo Mahlangu, founder of Mahlangu Online Solutions, a career and personal branding studio in Pretoria." },
   process: { title: "Our Process — From Conversation to Finished Work", description: "Discovery, strategy, design and handover. A collaborative process for your career documents, brand and digital presence." },
-  pricing: { title: "Services & Pricing — Accessible Premium Service", description: "Explore career, brand and digital services with tailored quotations and clearly agreed scope." },
   resources: { title: "CV, LinkedIn & Personal Branding Resources", description: "Practical guidance on CV writing in South Africa, LinkedIn profiles, portfolio websites and personal branding." },
   contact: { title: "Contact — Start Your Project", description: "Speak to Mahlangu Online Solutions in Pretoria about your CV, personal brand, design or website. Serving clients across South Africa." },
 };

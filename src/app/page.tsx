@@ -1,18 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, GraduationCap } from "lucide-react";
 import "./home.css";
 import "./home-motion.css";
 import { ButtonLink } from "@/components/button-link";
-import { FinalCta } from "@/components/final-cta";
 import { HeroVideo } from "@/components/hero-video";
 import { HomeMotion } from "@/components/home-motion";
+import { MessageComposer } from "@/components/message-composer";
 import { ProjectGrid } from "@/components/project-grid";
+import { ServiceIcon } from "@/components/service-icon";
 import { coreServices, services } from "@/content/services";
 import { projects } from "@/content/portfolio";
-import { startingPrice } from "@/content/pricing";
 import { pageMetadata, seo } from "@/content/seo";
-import { actions, home, process, site } from "@/content/site";
+import { actions, home, process, site, whatsappUrl } from "@/content/site";
 
 export const metadata = pageMetadata(seo.home.title, seo.home.description, "/");
 
@@ -38,6 +38,11 @@ export default function Home() {
         <nav className="hero-actions"><ButtonLink href="/contact">{actions.start}</ButtonLink><ButtonLink href="/work" variant="outline">{actions.work}</ButtonLink></nav>
         <div className="hero-bottom">
           <article><span>Who we are</span><p>A South African studio for people and businesses ready to be seen clearly.</p></article>
+          <article className="hero-credentials">
+            <span>Qualifications</span>
+            <ul>{site.degrees.awards.map((degree) => <li key={degree.award}><GraduationCap size={16} strokeWidth={1.7} aria-hidden="true"/><b>{degree.award}</b>{degree.field}</li>)}</ul>
+            <p>{site.degrees.institution}</p>
+          </article>
           <article><span>Based in Pretoria</span><p>Supporting career growth and small businesses across South Africa.</p></article>
           <article><span>Proof in practice</span><strong>{site.clients}</strong><p>clients served nationwide since 2023.</p></article>
         </div>
@@ -79,12 +84,13 @@ export default function Home() {
           {coreServices.map((service, index) => <Link key={service.id} href={`/services#${service.id}`} className="service-tile" data-panel data-tilt>
             <span className="panel-glare" aria-hidden="true"/>
             <span className="service-index">{String(index + 1).padStart(2, "0")}</span>
-            <span className="service-sigil" aria-hidden="true"><i/><i/><i/><i/></span>
+            <span className="service-sigil" aria-hidden="true"><i/><i/><b className="service-core"><ServiceIcon id={service.id}/></b><i/></span>
             <h3>{service.title}</h3>
             <p>{service.outcome}</p>
             <ArrowUpRight className="service-arrow" size={18}/>
           </Link>)}
         </div>
+        <p className="service-swipe-hint" aria-hidden="true">Swipe to see all {coreServices.length} <ArrowRight size={15}/></p>
       </div>
     </section>
 
@@ -143,14 +149,20 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="access-experience">
+    <section id="message" className="final-cta message-cta dark" data-hide-launcher>
       <div className="container" data-reveal>
-        <span>Accessible premium career support</span>
-        <strong>Starting from {startingPrice()}</strong>
-        <Link href="/pricing">View services and pricing <ArrowRight size={17}/></Link>
+        <div className="message-cta-copy">
+          <span className="eyebrow">Your next move</span>
+          <h2>{home.ctaHeading}</h2>
+          <p>{home.ctaBody}</p>
+          <dl className="message-cta-lines">
+            <div><dt>WhatsApp</dt><dd><a href={whatsappUrl()} target="_blank" rel="noreferrer">{site.phone}</a></dd></div>
+            <div><dt>Email</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+            <div><dt>Studio</dt><dd>{site.location}</dd></div>
+          </dl>
+        </div>
+        <MessageComposer />
       </div>
     </section>
-
-    <FinalCta />
   </main>;
 }

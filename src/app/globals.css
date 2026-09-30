@@ -1,5 +1,6 @@
 @import "../styles/tokens.css";
 @import "../styles/motion.css";
+@import "../styles/messaging.css";
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #000; color: var(--color-ink); font-family: var(--font-body); font-size: 1rem; line-height: 1.6; text-rendering: optimizeLegibility; }
@@ -28,7 +29,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .button-outline { border-color: currentColor; }
 .button-dark { background: #050505; color: #f7f7f7; border-color: rgb(255 255 255 / .18); }
 .text-link { display: inline-flex; align-items: center; gap: .6rem; font-weight: 700; border-bottom: 1px solid currentColor; padding-block: .25rem; }
-.whatsapp-fab { position: fixed; z-index: 45; right: 1rem; bottom: 1rem; display: flex; align-items: center; gap: .55rem; min-height: 3rem; padding: .7rem 1rem; background: linear-gradient(135deg,#f7f7f7,#aaa); color: #050505; border: 1px solid white; border-radius: var(--radius-full); box-shadow: 0 12px 35px rgb(0 0 0 / .46), inset 0 1px #fff; font-weight: 700; font-size: .9rem; }
 .dark { background: #000; color: var(--color-on-dark); }
 .dark .lede { color: rgb(255 255 255 / .66); }
 .rule { border-top: 1px solid var(--color-line); }
@@ -37,7 +37,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes rise { from { opacity: 0; transform: translateY(20px); } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 @media (max-width: 640px) { .container { width: min(100% - 1.25rem, 82rem); } .display { font-size: clamp(3rem, 15vw, 4.6rem); } .section-title { font-size: clamp(2.45rem, 12vw, 3.7rem); } }
-@media (max-width: 430px) { .whatsapp-fab span { display: none; } .whatsapp-fab { width: 3.25rem; justify-content: center; padding: .7rem; } }
 
 
 /* Shared monochrome experience */
@@ -243,7 +242,7 @@ body .enquiry-form textarea {
   100% { transform: translate3d(63vw,4vh,0) rotate(21deg) scaleX(.82); opacity: .24; }
 }
 main, .footer { position: relative; z-index: 2; }
-.site-header, .whatsapp-fab { z-index: 50; }
+.site-header, .message-fab { z-index: 50; }
 
 @media (max-width: 700px) {
   .site-ambient-motion { opacity: .32; }

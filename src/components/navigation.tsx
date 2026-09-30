@@ -67,6 +67,12 @@ export function Navigation() {
         .mobile-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; width: min(100%, 48rem); margin: 0 auto; }
         .site-header .logo, .menu-toggle { position: relative; z-index: 4; }
       }
+      @media (max-width: 900px) {
+        /* Frosted glass is switched off on phones for speed, so the bar gets a solid backing instead
+           and page text no longer shows through the logo while scrolling. */
+        .site-header::before { content: ""; position: absolute; z-index: 0; inset: 0 0 -1.25rem; background: linear-gradient(180deg, rgb(0 0 0 / .88), rgb(0 0 0 / .6) 62%, transparent); pointer-events: none; }
+        .site-header .logo, .menu-toggle { background: linear-gradient(135deg, rgb(34 34 34 / .97), rgb(4 4 4 / .97)); }
+      }
       @media (max-width: 520px) {
         .site-header { padding: .65rem; }
         .site-header .logo { padding: .42rem .55rem; }
